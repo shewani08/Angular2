@@ -1,0 +1,59 @@
+
+<form  [formGroup]="signup"  (ngSubmit)="save(signup)" id="myform">
+  <!--   [ngClass]="{'has-error':!signup.controls['flat_num'].valid && signup.controls['flat_num'].touched}"-->  
+  <div class="form-group">
+    <label class="center-block">Email
+      <input class="form-control"  formControlName="email">
+    <!--  <div *ngIf="signup.controls['flat_num'].hasError('required') && signup.controls['flat_num'].touched" class="alert alert-danger">You must include a flat number.</div>
+      <div *ngIf="signup.controls['flat_num'].hasError('pattern') && signup.controls['flat_num'].touched" class="alert alert-danger">Invalid Flat Number</div>-->
+    </label>
+  </div>
+ 
+  <div class="form-group">
+    <label class="center-block">Password:
+      <input class="form-control" formControlName="password">
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label class="center-block">Confirm Password:
+      <input class="form-control" formControlName="confirm">
+    </label>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-12">
+        <button type="submit" style="width:93%;margin:2% 0px;" >Continue</button>
+    </div>
+   </div>
+</form>
+
+<div style="text-align:center;margin:4% 0px;color:blue;font-weight: bold;font-size: 19px;">OR</div>
+<div class="row"><button style="width:55%;margin:2% 23%"(click)="signIn('google')"> <img src="..\assets\images\gmail.png" style="float:left;margin-right:0.5em">Continue with Google</button>  </div>
+<div class="row"><button style="width:55%;margin:2% 23%" (click)="signIn('facebook')"><img src="..\assets\images\facebook.png" style="float:left;margin-right:0.5em">Continue with Facebook</button></div>
+            
+
+
+<div *ngIf="user">
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td>{{user.name}}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{user.email}}</td>
+    </tr>
+    <tr>
+      <td>UID</td>
+      <td>{{user.uid}}</td>
+    </tr>
+    <tr>
+      <td>Provider</td>
+      <td>{{user.provider}}</td>
+    </tr>
+    <tr>
+      <td>Image</td>
+      <td>{{user.image}}</td>
+    </tr>
+  </table>
+</div>
