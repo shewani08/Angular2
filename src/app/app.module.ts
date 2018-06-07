@@ -8,7 +8,10 @@ import {SignUp} from './sign_up.component';
 import { Angular2SocialLoginModule } from "angular2-social-login";
 import { RouterModule } from '@angular/router';
 import{LoginService} from '../services/login.service';
-
+import{EqualValidator} from './services/EqualValidator';
+import {ToolTipModule} from 'angular2-tooltip'
+import { LoginComponent } from './loginIn.component';
+import { Login } from './login.component';
 let providers = {
     "google": {
       "clientId":'378321986942-bsj1fjhu63n899harbbhmegg5qom0l17.apps.googleusercontent.com'
@@ -31,7 +34,10 @@ const ROUTES = [
   declarations: [
     AppComponent,
     ModalComponent,
-    SignUp
+    LoginComponent,
+    SignUp,
+   EqualValidator,
+   Login
   ],
   imports: [
     BrowserModule,
@@ -39,9 +45,10 @@ const ROUTES = [
     HttpModule,
     ReactiveFormsModule,
     Angular2SocialLoginModule, 
+    ToolTipModule,
     RouterModule.forRoot(ROUTES)
  ],
-  providers: [LoginService],
+  providers: [LoginService,EqualValidator],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

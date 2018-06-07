@@ -1,7 +1,7 @@
-import {Component,EventEmitter,Output} from '@angular/core';
-import {SignUp} from './sign_up.component';
+import {Component} from '@angular/core';
+import {Login} from './login.component';
 @Component({
-  selector: 'app-modal',
+  selector: 'login-modal',
   template: `
   <div  class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
        [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}" >
@@ -9,15 +9,15 @@ import {SignUp} from './sign_up.component';
       <div class="modal-content">
         <div class="modal-header">
          <!-- <ng-content select=".app-modal-header"></ng-content>-->
-         <div class="row" style="margin: 0 0 4% 0;color:blue;font-weight: bold;font-size: 19px;">Sign Up</div>
+         <div class="row" style="margin: 0 0 4% 0;color:blue;font-weight: bold;font-size: 19px;">Create a new account</div>
         </div>
         <div class="modal-body">
      <!--   <ng-content select=".app-modal-content"></ng-content>-->
-     <signup-modal (loggedIn)="countChange($event)"></signup-modal>
+            <login></login>
         </div>
         <div class="modal-footer" style="text-align:left">
          <!-- <ng-content select=".app-modal-footer"></ng-content>-->
-         Already a member?<a (click)=openLogin() >Log In</a>
+        
         </div>
       </div>
     </div>
@@ -35,12 +35,11 @@ import {SignUp} from './sign_up.component';
     }
   `]
 })
-export class ModalComponent {
+export class LoginComponent {
 
   public visible = true;
   private visibleAnimate = false;
-  @Output() login=new EventEmitter();
-  
+
   constructor(){}
 
   ngOnInit(){
@@ -67,11 +66,6 @@ export class ModalComponent {
     if ((<HTMLElement>event.target).classList.contains('modal')) {
       this.hide();
     }
-  }
-  public openLogin(){
-    alert("inside login");
-    this.hide();
-    this.login.emit('true');
   }
 
 }

@@ -1,28 +1,38 @@
 
 <form  [formGroup]="signup"  (ngSubmit)="save(signup)" id="myform">
   <!--   [ngClass]="{'has-error':!signup.controls['flat_num'].valid && signup.controls['flat_num'].touched}"-->  
+ {{errorMessage}}
+  <div *ngIf="errorMessage" class="alert alert-danger">User already exist</div>
   <div class="form-group">
     <label class="center-block">Email
       <input class="form-control"  formControlName="email">
-    <!--  <div *ngIf="signup.controls['flat_num'].hasError('required') && signup.controls['flat_num'].touched" class="alert alert-danger">You must include a flat number.</div>
-      <div *ngIf="signup.controls['flat_num'].hasError('pattern') && signup.controls['flat_num'].touched" class="alert alert-danger">Invalid Flat Number</div>-->
+      
+      <div *ngIf="signup.controls['email'].hasError('required') && signup.controls['email'].touched" [ngClass] = "'error'">Email Required</div>
+      <div *ngIf="signup.controls['email'].hasError('pattern') && signup.controls['email'].touched" class="help-block" >Invalid Email</div>
     </label>
   </div>
  
   <div class="form-group">
     <label class="center-block">Password:
-      <input class="form-control" formControlName="password">
+      <input class="form-control" formControlName="password" >
+      <div *ngIf="signup.controls['password'].hasError('required') && signup.controls['password'].touched" class="alert alert-danger">Password Required</div>
+      <div *ngIf="signup.controls['password'].errors && signup.controls['password'].touched && !signup.controls['password'].hasError('required')" class="alert alert-danger">Password do not match</div>
+    
     </label>
   </div>
 
-  <div class="form-group">
+ <!-- <div class="form-group">
     <label class="center-block">Confirm Password:
-      <input class="form-control" formControlName="confirm">
+      <input class="form-control" formControlName="confirm" validateEqual="password" reverse="false">
+    
+        <div *ngIf="signup.controls['confirm'].hasError('required') && signup.controls['confirm'].touched" class="alert alert-danger">Password Required</div>
+        <div *ngIf="signup.controls['confirm'].errors && signup.controls['confirm'].touched && !signup.controls['confirm'].hasError['required']" class="alert alert-danger">Password do not match</div>
+      
     </label>
-  </div>
+  </div>-->
   <div class="form-group">
     <div class="col-xs-12">
-        <button type="submit" style="width:93%;margin:2% 0px;" >Continue</button>
+        <button type="submit" style="width:93%;margin:2% 0px;" class="btn btn-primary" [disabled]="!signup.valid">Continue</button>
     </div>
    </div>
 </form>
@@ -34,7 +44,7 @@
 
 
 <div *ngIf="user">
-  <table>
+  <!--<table>
     <tr>
       <td>Name:</td>
       <td>{{user.name}}</td>
@@ -55,5 +65,5 @@
       <td>Image</td>
       <td>{{user.image}}</td>
     </tr>
-  </table>
+  </table>-->
 </div>

@@ -9,9 +9,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app works shewani Negi!';
   fullImagePath='.//assets//images//isha.jpg';
-  
+  show:boolean=false;
   ngOnInit(){
     
 
+  }
+  loggedIn(event){
+    alert("event is"+event);
+    this.show=event;
   }
 }

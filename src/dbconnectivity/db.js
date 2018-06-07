@@ -12,19 +12,16 @@ module.exports = {
     var db = mongoose.connection;
     db.on('error', console.error.bind(console, 'MongoDB connection error:'));
     db.once('open', function() {
-  console.log("DB connection alive");
+
   new User({ _id:user.email, password: user.password })
       .save(function (err) {
         if (err) {
           res.status(504);
-          res.end(err);
-
-        } else {
-          console.log('user saved');
-         
+         // res.end(err);
           User.find({}, function (err, docs) {
             if (err) {
               res.status(504);
+          console.log("has error");
              
               res.end(err);
             } else {
@@ -34,10 +31,19 @@ module.exports = {
               res.end(JSON.stringify(docs));
             }
           });
+
+        } else {
+          console.log('user saved');
+         
+         
           res.end();
         }
       });
 })
+db.close();
    
+  },
+  getUser:function(req,res){
+    console.log("ehljljf");
   }
-  }
+  };

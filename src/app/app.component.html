@@ -1,16 +1,12 @@
-<app-modal #modal1>
-  <div class="app-modal-header">
+<app-modal (login)="loggedIn($event)" >
   
-  </div>
-  <div class="app-modal-body">
-    
-  </div>
-  <div class="app-modal-footer">
-   
-  </div>
 </app-modal>
+<login-modal *ngIf=show>
+  
+</login-modal>
 <!DOCTYPE html>
 <html>
+  
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">

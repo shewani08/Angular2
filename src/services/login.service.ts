@@ -13,6 +13,7 @@ import 'rxjs/add/operator/catch';
  
 
   postAllData (body: Object) {
+      console.log("insert postAllData function");
      let url="http://localhost:3300/createUsers";
      let data = new URLSearchParams();
      // data.append('email','negi.shewani');
@@ -20,12 +21,24 @@ import 'rxjs/add/operator/catch';
       return this.http.post(url, body)
       .map(res => {
         if (res) {   
-                 
+     
           return true;
+         
         }
 
         return false;
       })
      
+    }
+
+    getAllData (options) {
+      console.log("insert getalldata function");
+     let url="http://localhost:3300/getUser";
+    // let data = new URLSearchParams();
+     return this.http.get(url)
+     // ...and calling .json() on the response to return data
+      .map((res:Response) => res.json())
+      //...errors if any
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));     
     }
   }
