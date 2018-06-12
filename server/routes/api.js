@@ -9,9 +9,19 @@ router.get('/', (req, res) => {
 /**
  * Create HTTP server.
  */
-
+const options = {
+  socketTimeoutMS: 30000,
+  keepAlive: true,
+  reconnectTries: 30000
+};
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/myappdatabase');
+//mongoose.connect('mongodb://127.0.0.1:27017/myappdatabase');
+mongoose.connect("mongodb://127.0.0.1:27017/myappdatabase", options).then(()=>{
+    console.log('MongoDB is connected')
+  }).catch(err=>{
+    console.log('MongoDB connection unsuccessful, retry after 5 seconds.')
+    setTimeout(connectWithRetry, 5000)
+  })
 
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
@@ -19,11 +29,11 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 
 //Bind connection to error event (to get notification of connection errors)
-/*db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', function() {
   console.log("DB connection alive");
  
-})*/
+})
 
  // Get Todos
 /*router.post('/api/createUsers', (req, res, next)=>{

@@ -46,7 +46,8 @@ export class SignUp {
       function(error) {this.errorMessage=<any>error;
          console.log("Error happened" + error);
     },
-      function() { console.log("the subscription is completed");this.signOUt();}
+      function() { console.log("the subscription is completed");
+      this.signOUt();}
   );
   this.signup.reset();
   }

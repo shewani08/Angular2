@@ -12,6 +12,7 @@ import{EqualValidator} from './services/EqualValidator';
 import {ToolTipModule} from 'angular2-tooltip'
 import { LoginComponent } from './loginIn.component';
 import { Login } from './login.component';
+import { MainComponent } from './main.component';
 let providers = {
     "google": {
       "clientId":'378321986942-bsj1fjhu63n899harbbhmegg5qom0l17.apps.googleusercontent.com'
@@ -37,7 +38,8 @@ const ROUTES = [
     LoginComponent,
     SignUp,
    EqualValidator,
-   Login
+   Login,
+   MainComponent
   ],
   imports: [
     BrowserModule,

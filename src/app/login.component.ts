@@ -27,8 +27,7 @@ export class Login {
 
   logoutfunction(){
   console.log("hi");
-
-    //  this.loggedIn.emit(false);
+     this.loggedIn.emit(true);
   }
   
   createForm() {
@@ -47,11 +46,12 @@ export class Login {
       this.loginservice.postAllData(data)
       .subscribe(
         function(response) { console.log("Success Response" + response);},
-        function(error) {this.errorMessage=<any>error;
+        function(error) 
+        {this.errorMessage=<any>error;
            console.log("Error happened" + error);
       },
         function() { console.log("the subscription is completed");
-       // this.login.logoutfunction();
+       this.logoutfunction();
       }
     );
     this.login.reset();

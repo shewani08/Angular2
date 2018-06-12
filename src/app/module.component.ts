@@ -55,7 +55,9 @@ export class ModalComponent {
    
   }
   countChange(event){
-    this.visible=event;
+    alert("inside countchange");
+    this.visible=!event;
+    alert("this.visible is"+this.visible);
 
   }
   public hide(): void {
@@ -69,7 +71,6 @@ export class ModalComponent {
     }
   }
   public openLogin(){
-    alert("inside login");
     this.hide();
     this.login.emit('true');
   }

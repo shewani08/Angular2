@@ -3,7 +3,7 @@ var User = mongoose.model('User');
 module.exports = {
   createUsers: function (req, res) {
     var user = req.body;
-    console.log("value"+user.email) ;
+   
        mongoose.connect('mongodb://127.0.0.1:27017/myappdatabase');
 
     // Get Mongoose to use the global promise library
@@ -15,6 +15,7 @@ module.exports = {
 
   new User({ _id:user.email, password: user.password })
       .save(function (err) {
+        console.log("inside new create function");
         if (err) {
           res.status(504);
          // res.end(err);
@@ -40,10 +41,11 @@ module.exports = {
         }
       });
 })
-db.close();
+
    
   },
-  getUser:function(req,res){
-    console.log("ehljljf");
+  getUser:function(){
+    console.log("test");
   }
-  };
+  }
+
