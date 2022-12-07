@@ -24,7 +24,7 @@
     "angular2-tooltip": "^3.1.0",
     "body-parser": "^1.18.2",
     "core-js": "^2.4.1",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "mongoose": "*",
     "rxjs": "^5.0.1",
     "systemjs": "^0.21.2",
